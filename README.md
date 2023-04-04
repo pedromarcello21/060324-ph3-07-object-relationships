@@ -2,6 +2,8 @@
 
 ## Learning Goals
 
+- Importing modules
+
 - Object Oriented Programming
 
 - Benefits and Principles of OOP Design
@@ -13,6 +15,8 @@
 - Initializing with attributes using init
 
 - Instance methods
+
+- Showing instances using repr
 
 - Self
 
