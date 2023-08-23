@@ -22,6 +22,8 @@
 
 - Stretch Topics: Object properties
 
+- Stretch Topics: Class attributes and methods
+
 ## Exercise
 
 1. Humans initialize with a `first_name` and `last_name`.
