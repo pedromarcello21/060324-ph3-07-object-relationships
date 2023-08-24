@@ -1,11 +1,8 @@
 # import App from './App'
-from classes.robot import Robot
-from classes.human import Human
-
-print('Beep boop')
-
-robot1 = Robot("greg", 12345)
-
-human1 = Human("Bob", "Ross")
+from classes.bird import Bird
+from classes.cat import Cat
+from classes.dog import Dog
+from classes.fish import Fish
+from classes.mammal import Mammal
 
 import ipdb; ipdb.set_trace()
