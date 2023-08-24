@@ -5,4 +5,4 @@ class Cat:
         self.lives_remaining = lives_remaining
 
     def __repr__(self):
-        return f"Cat(name={self.name}, lives_remaining={lives_remaining})"
+        return f"Cat(name={self.name}, lives_remaining={self.lives_remaining})"
