@@ -5,7 +5,7 @@ class Mammal:
         self.rested = rested
 
     def __repr__(self):
-        return f"Mammal(name={name})"
+        return f"Mammal(name={self.name})"
 
     def make_sound(self):
         return "generic mammal sound"
