@@ -7,4 +7,4 @@ class Bird:
         return f"Bird(name={self.name})"
 
     def tweet(self):
-        return f"{self.name} is posting all their tweets"
+        return f"{self.name} is posting all their tweets... I mean X's"
