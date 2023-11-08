@@ -1,8 +1,8 @@
-# import App from './App'
-from classes.bird import Bird
-from classes.cat import Cat
-from classes.dog import Dog
-from classes.fish import Fish
-from classes.mammal import Mammal
+# One to Many #
+from classes.models import Car, Garage
 
-import ipdb; ipdb.set_trace()
+# Many to Many #
+from classes.models import Doctor, Patient
+
+# HARD MODE #
+from classes.models import Student, Instructor, Course, Assignment, School
