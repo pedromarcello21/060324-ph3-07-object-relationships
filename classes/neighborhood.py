@@ -11,6 +11,9 @@ class Neighborhood:
     
     def homes(self):
         return [ home for home in Home.all_homes if home.neighborhood == self ]
+    
+    def parks(self):
+        return [ park for park in Park.all_parks if park.neighborhood == self ]
 
 
 class Home:
@@ -55,6 +58,12 @@ class Resident:
 
     def __repr__(self):
         return f"Resident(name={self.name}, vehicle={self.vehicle})"
+    
+    def visits(self):
+        return [ visit for visit in Visit.all_visits if visit.resident == self ]
+    
+    def parks(self):
+        return [ visit.park for visit in Visit.all_visits if visit.resident == self ]
 
     @property
     def home(self):
@@ -68,6 +77,48 @@ class Resident:
             raise TypeError("This is not a home!")
 
 
+class Park:
+    
+    all_parks = []
+
+    def __init__(self, name, neighborhood):
+        self.name = name
+        self.neighborhood = neighborhood
+        Park.all_parks.append(self)
+
+    def __repr__(self):
+        return f"Park(name={self.name}, neighborhood={self.neighborhood})"
+    
+    def visits(self):
+        return [ visit for visit in Visit.all_visits if visit.park == self ]
+    
+    def residents(self):
+        return [ visit.resident for visit in Visit.all_visits if visit.park == self ]
+    
+    @property
+    def name(self):
+        return self._name
+    
+    @name.setter
+    def name(self, new_name):
+        if hasattr("_name"):
+            raise Exception("You cannot change the name once set")
+        else:
+            self._name = new_name
+
+
+class Visit:
+
+    all_visits = []
+
+    def __init__(self, park, resident):
+        self.park = park
+        self.resident = resident
+        Visit.all_visits.append(self)
+
+    def __repr__(self):
+        return f"Visit()"
+    
 n1 = Neighborhood("1", "Manhattan")
 n2 = Neighborhood("2", "Brooklyn")
 
@@ -83,21 +134,6 @@ r4 = Resident("Jaeem", "7 Train", h1)
 r5 = Resident("Anton", "N Train", h3)
 r6 = Resident("Chett", "4 Train", h4)
 
+p1 = Park(name="Central Park", neighborhood=n1)
 
-
-####################################################################
-
-class Park:
-    # neighborhood has many parks
-    # park belongs to a neighborhood
-    pass
-
-
-class Visit:
-    # visit belongs to a park
-    # visit belongs to a resident
-    # resident has many visits
-    # park has many visits
-    # residents have many parks through visits
-    # parks have many residents through visits
-    pass
+v1 = Visit(resident=r1, park=p1)
