@@ -50,7 +50,7 @@ class Patient:
     
 
 
-# STUDENT - INSTRUCTOR - COURSE - ASSIGNMENT - SCHOOL RELATIONSHIP ###
+# STUDENT - ASSIGNMENT - COURSE - INSTRUCTOR ###
 
 # STUDENT ###
 class Student:
@@ -79,23 +79,5 @@ class Course:
     def __repr__(self):
         return f"Course(subject={self.subject})"
 
-# ASSIGNMENT ###
-class Assignment:
 
-    def __init__(self, title, grade):
-        self.title = title
-        self.grade = grade
-
-    def __repr__(self):
-        return f"Assignment(title={self.title}, grade={self.grade})"
-
-# SCHOOL ###
-class School:
-
-    def __init__(self, name):
-        self.name = name
-
-    def __repr__(self):
-        return f"School(name={self.name})"
-    
 ##############################
