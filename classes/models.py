@@ -16,39 +16,22 @@ class Car:
     def __repr__(self):
         return f"Car(make={self.make}, model={self.model}, license_plate={self.license_plate})"
 
-    @property
-    def garage(self):
-        return self._garage
-    
-    @garage.setter
-    def garage(self, new_garage):
-        # if type(new_garage) is Garage:
-        if isinstance(new_garage, Garage):
-            self._garage = new_garage
-        else:
-            raise TypeError("cars belong in garages, garage must of type Garage")
-
-
 
 # GARAGE ### HAS MANY CARS
 class Garage:
+
+    all_garages = []
     
     def __init__(self, address):
         self.address = address
+        Garage.all_garages.append(self)
 
     def __repr__(self):
         return f"Garage(address={self.address})"
     
-    def cars(self):
-        # give me all the cars that belong to this garage
-        # self == the garage that called this method
-        return [ car for car in Car.all_cars if car.garage == self ]
 
-        # JS #
-        # all_cars.filter((car) => {
-        #     return car.garage === self
-        # })
-
+##############################
+##############################
 ##############################
     
 
@@ -57,35 +40,30 @@ class Garage:
 # DOCTOR ###
 class Doctor:
 
+    all_doctors = []
+
     def __init__(self, name, specialty):
         self.name = name
         self.specialty = specialty
+        Doctor.all_doctors.append(self)
 
     def __repr__(self):
         return f"Doctor(name={self.name}, specialty={self.specialty})"
     
-    def appointments(self):
-        return [ appt for appt in Appointment.all_appts if appt.doctor == self ]
-    
-    def patients(self):
-        return [ appt.patient for appt in Appointment.all_appts if appt.doctor == self ]
 
 # PATIENT ###
 class Patient:
 
+    all_patients = []
+
     def __init__(self, first_name, last_name):
         self.first_name = first_name
         self.last_name = last_name
+        Patient.all_patients.append(self)
 
     def __repr__(self):
         return f"Patient(first_name={self.first_name}, last_name={self.last_name})"
-    
-    def appointments(self):
-        return [ appt for appt in Appointment.all_appts if appt.patient == self ]
-    
-    def doctors(self):
-        return [ appt.doctor for appt in Appointment.all_appts if appt.patient is self ]
-    
+
 
 # APPT ###
 class Appointment:
@@ -102,37 +80,47 @@ class Appointment:
     
     
 ##############################
+##############################
+##############################
     
 
 
-# STUDENT - ASSIGNMENT - COURSE - INSTRUCTOR ###
+# STUDENT - ENROLLMENT - COURSE ###
 
 # STUDENT ###
 class Student:
 
+    all_students = []
+
     def __init__(self, name):
         self.name = name
+        Student.all_students.append(self)
 
     def __repr__(self):
         return f"Student(name={self.name})"
     
-# INSTRUCTOR ###
-class Instructor:
-
-    def __init__(self, name):
-        self.name = name
-
-    def __repr__(self):
-        return f"Instructor(name={self.name})"
-    
 # COURSE ###
 class Course:
 
-    def __init__(self, subject, start_date):
+    all_courses = []
+
+    def __init__(self, subject):
         self.subject = subject
+        Course.all_courses.append(self)
 
     def __repr__(self):
         return f"Course(subject={self.subject})"
+    
+# GRADE ###
+class Grade:
+
+    all_grades = []
 
 
-##############################
+    def __init__(self, value):
+        self.value = value
+
+
+    def __repr__(self):
+        return f"Grade(value={self.value})"
+
