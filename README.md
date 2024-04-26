@@ -12,8 +12,12 @@
 
 ## Exercises
 
-- Come up with a modeling domain based on football. How would the relationship between Players and Teams look? What if there was a Contract model that allowed multiple players to play on multiple teams during their career?
+Within `models.py` build out the Student / Enrollment / Course relationship.
 
-- Come up with a modeling domain based on Amazon. How would the relationships between Users, Products, and Orders look?
+1. Identify where the source of truth should lie.
 
-- Come up with a modeling domain based on Twitter. How would the relationships between Users, Tweets, and Comments work? As a bonus, how would a User follow another User?
+2. Add the proper attributes / properties to the `belongs to` class.
+
+    2a. The property setters should ensure only an instance of the correct class gets associated
+
+3. Build methods in the proper classes so they can identify instances that belong to them.
