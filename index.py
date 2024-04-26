@@ -5,7 +5,9 @@ from classes.models import Car, Garage
 from classes.models import Doctor, Patient, Appointment
 
 # HARD MODE # (You may need to make more models to make this work!)
-from classes.models import Student, Instructor, Course
+from classes.models import Student, Enrollment, Course
+
+# SEED DATA
 
 g1 = Garage("11 Broadway")
 g2 = Garage("123 Sesame Street")
