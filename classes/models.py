@@ -165,6 +165,12 @@ class Student:
     def __repr__(self):
         return f"Student(name={self.name})"
     
+    def enrollments(self):
+        return [enrollment for enrollment in Enrollment.all_enrollments if enrollment.student == self.name]
+
+    def courses(self):
+        return [enrollment.course for enrollment in Enrollment.all_enrollments if enrollment.student == self.name]
+    
 # COURSE ###
 class Course:
 
@@ -177,14 +183,43 @@ class Course:
     def __repr__(self):
         return f"Course(subject={self.subject})"
     
+    def enrollments(self):
+        return [enrollment for enrollment in Enrollment.all_enrollments if enrollment.course == self.subject]
+        
+    def students(self):
+        return [enrollment.student for enrollment in Enrollment.all_enrollments if enrollment.course == self.subject]
+    
 # ENROLLMENT ###
 class Enrollment:
 
     all_enrollments = []
 
-    def __init__(self, start_date:str):
+    def __init__(self, start_date, student, course):
         self.start_date = start_date
+        self.student = student
+        self.course = course
         Enrollment.all_enrollments.append(self)
 
     def __repr__(self):
-        return f"Enrollment(start_date={self.start_date})"
+        return f"Enrollment(start_date={self.start_date}, student={self.student}, course = {self.course})"
+    
+    ##student getter
+    @property
+    def student(self):
+        return self._student
+    @student.setter
+    def student(self, value):
+        if type(value) == Student:
+            self._student = value
+        else:
+            TypeError("student must be of type student")
+    
+    # @property
+    # def course(self):
+    #     return self._course
+    # @course.setter
+    # def course(self, value):
+    #     if type(value) == Course:
+    #         self._course == value
+    #     else:
+    #         TypeError("Course must be of type course")
